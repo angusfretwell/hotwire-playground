@@ -27,6 +27,7 @@ class BuildsController < ApplicationController
       if @build.save
         format.html { redirect_to build_url(@build), notice: "Build was successfully created." }
         format.json { render :show, status: :created, location: @build }
+        format.turbo_stream { render turbo_stream: turbo_stream.action(:redirect, build_url(@build)) }
       else
         format.html { render :new, status: :unprocessable_entity }
         format.json { render json: @build.errors, status: :unprocessable_entity }

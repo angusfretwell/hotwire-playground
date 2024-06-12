@@ -1,6 +1,8 @@
 <h1>New build</h1>
 
-<%= render "form", build: @build %>
+<%= turbo_frame_tag :dialog do %>
+  <%= render "form", build: @build %>
+<% end %>
 
 <br>
 
