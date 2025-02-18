@@ -8,9 +8,15 @@
 
     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
     <%= javascript_importmap_tags %>
+
+    <%= yield :head %>
   </head>
 
   <body>
+    <dialog data-controller="dialog" data-action="turbo:frame-load->dialog#showModal">
+      <%= turbo_frame_tag :dialog %>
+    </dialog>
+
     <%= yield %>
   </body>
 </html>

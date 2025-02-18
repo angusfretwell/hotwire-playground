@@ -8,3 +8,5 @@
 
   <%= button_to "Destroy this build", @build, method: :delete %>
 </div>
+
+<%= link_to "New build", new_build_path, data: { turbo_frame: :dialog } %>

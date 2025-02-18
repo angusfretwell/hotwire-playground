@@ -19,7 +19,10 @@ class BuildsController < ApplicationController
     @build = Build.new(build_params)
 
     if @build.save
-      redirect_to build_url(@build), notice: "Build was successfully created."
+      respond_to do |format|
+        format.html { redirect_to build_url(@build), notice: "Build was successfully created." }
+        format.turbo_stream { render turbo_stream: turbo_stream.action(:visit, build_url(@build)) }
+      end
     else
       render :new, status: :unprocessable_entity
     end

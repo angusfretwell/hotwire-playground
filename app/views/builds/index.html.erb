@@ -1,6 +1,12 @@
+<%= turbo_refreshes_with method: :morph, scroll: :preserve %>
+
+<%= turbo_stream_from :builds %>
+
 <p style="color: green"><%= notice %></p>
 
 <h1>Builds</h1>
+
+<%= link_to "New build", new_build_path, data: { turbo_frame: :dialog } %>
 
 <div id="builds">
   <% @builds.each do |build| %>
@@ -10,5 +16,3 @@
     </p>
   <% end %>
 </div>
-
-<%= link_to "New build", new_build_path %>
